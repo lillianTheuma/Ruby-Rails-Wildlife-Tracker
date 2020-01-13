@@ -1,0 +1,27 @@
+<h1><%= @animal.name %></h1>
+<h3><%= @animal.latitude %></h3>
+<h3><%= @animal.longitude %></h3>
+
+<% if @animal.regions.any? %>
+  <h4>Here are the regions for this animal:</h4>
+
+  <% @animal.regions.each do |region| %>
+    <ul>
+      <li>
+        <%= link_to region.name, animal_region_path(@animal, region) %>
+      </li>
+    </ul>
+  <% end %>
+<% else %>
+  <p>No regions are listed for this animal.</p>
+<% end %>
+
+<p><%= link_to "Add a region", new_animal_region_path(@animal) %></p>
+
+
+<p><%= link_to "Edit", edit_animal_path(@animal) %></p>
+<p><%= link_to "Delete", animal_path(@animal),
+                         :data => {:confirm => "You sure?",
+                                   :method => "delete"} %></p>
+
+<p><%= link_to "Return to animals", animals_path %></p>
