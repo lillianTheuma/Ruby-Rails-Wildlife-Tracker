@@ -4,9 +4,8 @@ class RegionsController < ApplicationController
     @region = @animal.regions.new
     render :new
   end
-end
 
-def create
+  def create
     @animal = Animal.find(params[:animal_id])
     @region = @animal.regions.new(region_params)
     if @region.save
@@ -23,27 +22,28 @@ def create
   end
 
   def edit
-  @animal = Animal.find(params[:animal_id])
-  @region = Region.find(params[:id])
-  render :edit
-end
-
-def update
-  @region = Region.find(params[:id])
-  if @region.update(region_params)
-    redirect_to animal_path(@region.animal)
-  else
+    @animal = Animal.find(params[:animal_id])
+    @region = Region.find(params[:id])
     render :edit
   end
-end
 
-def destroy
-  @region = Region.find(params[:id])
-  @region.destroy
-  redirect_to animal_path(@region.animal)
-end
+  def update
+    @region = Region.find(params[:id])
+    if @region.update(region_params)
+      redirect_to animal_path(@region.animal)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @region = Region.find(params[:id])
+    @region.destroy
+    redirect_to animal_path(@region.animal)
+  end
 
   private
-    def region_params
-      params.require(:region).permit(:name)
-    end
+  def region_params
+    params.require(:region).permit(:name)
+  end
+end
