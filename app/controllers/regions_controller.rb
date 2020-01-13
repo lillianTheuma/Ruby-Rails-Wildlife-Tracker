@@ -2,6 +2,7 @@ class RegionsController < ApplicationController
   def new
     @animal = Animal.find(params[:animal_id])
     @region = @animal.regions.new
+    @animals = Animal.all
     render :new
   end
 
@@ -18,12 +19,14 @@ class RegionsController < ApplicationController
   def show
     @animal = Animal.find(params[:animal_id])
     @region = Region.find(params[:id])
+    @animals = Animal.all
     render :show
   end
 
   def edit
     @animal = Animal.find(params[:animal_id])
     @region = Region.find(params[:id])
+    @animals = Animal.all
     render :edit
   end
 
