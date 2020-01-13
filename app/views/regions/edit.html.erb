@@ -1,0 +1,7 @@
+<h1>Edit region:</h1>
+
+<%= form_for [@animal, @region] do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <p><%= f.submit %></p>
+<% end %>

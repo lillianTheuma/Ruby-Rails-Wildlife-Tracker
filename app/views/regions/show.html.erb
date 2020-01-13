@@ -1,0 +1,10 @@
+<h1>Song: <%= @region.name %></h1>
+<h2>Animal: <%= @animal.name %></h2>
+<h3><%= @region.lyrics %></h3>
+
+<p><%= link_to "Edit region", edit_animal_region_path(@animal, @region) %></p>
+<p><%= link_to "Delete region", animal_region_path(@animal, @region),
+                        :data => {:confirm => "Are you sure?",
+                                       :method => "delete"} %></p>
+
+<p><%= link_to "Return to animal", animal_path(@animal) %></p>
